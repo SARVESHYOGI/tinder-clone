@@ -26,6 +26,14 @@ app.get('/', (req, res) => {
     res.status(200).send('Hello World!');
 });
 
+app.use("/",
+    (req, res, next) => {
+        console.log("Request URL:", req.originalUrl);
+        console.log("Request Type:", req.method);
+        next();
+    }
+)
+
 app.post('/tinder/cards', async (req, res) => {
     const dbCard = req.body;
     console.log('Received data:', dbCard);  // Log the received data
